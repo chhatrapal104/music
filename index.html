@@ -25,11 +25,11 @@
 
 
     <!-- contaol///////// -->
-<!-- <i class="fas fa-arrow-left"></i> -->
+<!-- <i class="fa fa-arrow-left"></i> -->
     <div class="music_control"> 
-     <i  class="fas fa-fast-backward" id="prev" title="Previous"></i>
-     <i class="fas fa-play main_button" id="play" title="Play"></i>
-     <i class="fas fa-forward" id="next" title="Next"></i>
+     <i  class="fa fa-fast-backward" id="prev" title="Previous"></i>
+     <i class="fa fa-play main_button" id="play" title="Play"></i>
+     <i class="fa fa-forward" id="next" title="Next"></i>
                 <!-- <i class="fal fa-arrow-square-left" id="prev" title="previous"></i>"></i> -->
    </div>
 </div>
@@ -39,36 +39,54 @@
  const music = document.querySelector('audio');
  const img = document.querySelector("img");
  const play = document.getElementById('play');
+ console.log(play + "button");
 
 
  let isPlaying = false;
 
 //  play functionwaa
 
-play.addEventListener('click', () => {
-     isPlaying = true;
-    music.play();
-   
-    play.classList.replace("fas fa-play", "fas fa-pause");
-    img.classList.add("anime");
-});
+//U didnt define a function, instead declared an event listener
 
+// play.addEventListener('click', () => {
+//      isPlaying = true;
+//     music.play();
+   
+//     // play.classList.replace("fa fa-play", "fa fa-pause");
+//     img.classList.add("anime");
+// });
+
+
+//fa is also a class which is not to be removed in both the functions....
+
+
+
+    const playMusic = () => {
+        isPlaying = true;
+        music.play();
+        console.log(play.classList);
+        play.classList.replace("fa-play", "fa-pause");
+    img.classList.add("anime");
+    } 
 
 //   for pause function
-
+//modified the pauseMusic function to call music.pause() instead of music.play()
   const pauseMusic = () => {
         isPlaying = false;
-        music.play();
-        play.classList.replace( "fas fa-pause" , "fas fa-play");
+        music.pause();
+        play.classList.replace( "fa-pause" , "fa-play");
         img.classList.remove("anime");
     };
 
   play.addEventListener("click", () => {
+      console.log("button clicked");
       if (isPlaying){
+          console.log("pause music");
           pauseMusic();
            }
     else{
-           playMusic();
+        console.log("play music");
+         playMusic();
     }
     });
 
